@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Downloaded Content
+download_vids/
+*.mp4
+*.jpg
+
+# Reports and Logs
+download_report.txt
+*.log
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# User Data
+test_urls.txt
