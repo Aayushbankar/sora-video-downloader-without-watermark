@@ -161,3 +161,12 @@ python sora_video_downloader.py "https://sora.chatgpt.com/p/video_id" --info-onl
 The reverse engineering was successful. The SoraSave service uses a simple but effective proxy-based approach to extract non-watermarked videos from Sora. The discovered API endpoints and workflow have been implemented in multiple tools for different use cases.
 
 **Key Takeaway**: The "magic" is simply a proxy service that handles the watermark removal server-side, allowing clients to download clean videos directly.
+## 🔬 Direct Download Analysis
+
+### Findings
+The service relies on a proxy (`api.soracdn.workers.dev`) to fetch videos. Direct access to `sora.chatgpt.com` or `videos.openai.com` is protected by:
+1.  **Cloudflare**: Prevents automated scraping (blocks headless browsers).
+2.  **Azure Blob Storage Auth**: The underlying storage uses SAS tokens or strict container policies, returning `400 Bad Request` for direct access without a valid signature.
+
+### Recommendation
+Use the provided `src/sora_downloader.py` (which uses the `api.soracdn.workers.dev` proxy) as it is the only reliable method found.
