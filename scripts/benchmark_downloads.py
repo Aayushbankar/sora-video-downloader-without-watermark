@@ -4,7 +4,7 @@ import time
 import statistics
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.sora_downloader import SoraVideoDownloader
+from src.sora_downloader import CleanSoraDownloader
 
 def clean_url(line):
     # Remove whitespace, trailing commas, trailing dots
@@ -22,7 +22,7 @@ def main():
         
     print(f"Found {len(urls)} videos to download.")
     
-    downloader = SoraVideoDownloader()
+    downloader = CleanSoraDownloader()
     times = []
     
     print("-" * 60)
@@ -35,28 +35,18 @@ def main():
             
         start_time = time.time()
         try:
-            # First extract info to get title for filename
             print(f"[{i}/{len(urls)}] Processing...", end='\r')
-            video_info = downloader.extract_video_info(url)
             
-            # Construct filename in download_vids folder
-            title = video_info.get('title', f"video_{i}")
-            post_id = video_info.get('post_id')
-            if not title: 
-                 title = f"sora_{post_id}"
-                 
-            clean_title = downloader._clean_filename(title)
-            output_path = os.path.join(output_dir, f"{clean_title}.mp4")
-            
-            # Download
-            downloader.download_video(url, output_path)
+            # The new downloader handles filename generation and saving
+            output_path = downloader.download_video(url, output_dir=output_dir)
             
             duration = time.time() - start_time
             times.append(duration)
             
             # Print brief result row
-            vid_id_short = post_id if post_id else "unknown"
-            print(f"{vid_id_short:<35} | {'DONE':<10} | {duration:.2f}s     ")
+            # Extract simple ID for display
+            vid_id = url.split('/')[-1]
+            print(f"{vid_id:<35} | {'DONE':<10} | {duration:.2f}s     ")
             
         except Exception as e:
             print(f"\nFailed {url}: {e}")
