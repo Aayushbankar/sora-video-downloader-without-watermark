@@ -1,5 +1,5 @@
 import sys
-from src.clean_sora_downloader import CleanSoraDownloader
+from src.sora_downloader import CleanSoraDownloader
 
 def test_download():
     # Use the test URL from analysis
