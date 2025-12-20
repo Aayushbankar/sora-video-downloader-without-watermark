@@ -572,8 +572,17 @@ footer {
     /* Mobile Header */
     header {
         padding: 15px 0;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.95);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+    }
+
+    /* Ensure Nav container keeps Logo and Toggle in a row */
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
 
     .menu-toggle {
@@ -582,18 +591,21 @@ footer {
 
     /* Show Hamburger */
 
+    /* Slide-out Menu */
     .nav-links {
         position: fixed;
         top: 60px;
-        /* Below header */
+        /* Match header height */
         right: -100%;
         width: 100%;
-        height: calc(100vh - 60px);
+        height: 100vh;
         background: #000;
+        display: flex;
+        /* Force flex */
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        padding-top: 60px;
+        padding-top: 40px;
         transition: right 0.3s cubic-bezier(0.77, 0, 0.175, 1);
         z-index: 99;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -605,11 +617,33 @@ footer {
 
     .nav-links a {
         margin: 0;
-        padding: 20px;
-        font-size: 1.2rem;
+        padding: 24px;
+        font-size: 1.5rem;
+        /* Larger font */
         width: 100%;
         text-align: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+        /* Staggered animation could go here but keep simple for now */
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Highlighting the 'Single Mode' / 'Batch Mode' button */
+    .nav-links a.highlight {
+        color: var(--primary-color);
+        font-weight: 700;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     }
 
     /* Hamburger Animation */
