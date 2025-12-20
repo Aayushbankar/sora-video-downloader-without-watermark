@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Sora Video Downloader. Remove watermarks instantly.">
-    <title>SoraFlow | Professional Tool</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="description" content="Batch processor.">
+    <title>SoraFlow | Batch</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,34 +14,32 @@
 
 <body>
     <div class="background-glow"></div>
-
     <header>
         <nav class="container">
             <div class="logo">Sora<span class="highlight">Flow</span> <span class="beta-badge">BETA</span></div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="#faq">FAQ</a>
-                <a href="bulk/" class="highlight">Batch Mode</a>
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#how-it-works">How it Works</a>
+                <a href="../index.html#faq">FAQ</a>
+                <a href="../index.html" class="highlight">Single Mode</a>
             </div>
         </nav>
     </header>
-
     <main class="hero-section">
         <div class="container">
-            <h1 class="hero-title">Sora<span class="gradient-text">Flow</span></h1>
-            <p class="hero-subtitle">The industry standard for clean, watermark-free Sora video extraction. <br>Secure.
-                Fast. Enterprise-Grade.</p>
-
+            <h1 class="hero-title">Batch <span class="gradient-text">Downloader</span></h1>
+            <p class="hero-subtitle">Enterprise-grade queue processing. <br>Paste multiple links below (one per line).
+            </p>
             <div class="downloader-card">
-                <div class="input-group">
-                    <input type="text" id="v_in" placeholder="Paste Sora video link here..." autocomplete="off">
-                    <button id="act_btn" class="primary-btn">
-                        <span class="act_lbl">Download</span>
+                <div class="input-group vertical">
+                    <textarea id="v_batch" placeholder="Paste multiple Sora video links here (one per line)..."
+                        autocomplete="off"></textarea>
+                    <button id="act_btn" class="primary-btn full-width">
+                        <span class="act_lbl">Download All</span>
                         <div class="proc_ind hidden"></div>
                     </button>
                 </div>
-                <div id="s_out"></div>
+                <div id="s_log" class="status-log"></div>
             </div>
         </div>
     </main>
@@ -70,24 +68,25 @@
     <section id="how-it-works" class="steps-section">
         <div class="container">
             <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Three simple steps to clean video assets.</p>
+                <h2>How Batch Works</h2>
+                <p>Automated queue processing for professionals.</p>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-icon">📋</div>
-                    <h3>Copy Link</h3>
-                    <p>Find the Sora video you want to save and copy its URL from your browser or share menu.</p>
+                    <h3>Paste Links</h3>
+                    <p>Copy multiple Sora video URLs and paste them into the box above, one on each line.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon">⚡</div>
-                    <h3>Paste & Process</h3>
-                    <p>Paste the link into our secure tool. Our engine instantly removes the watermark layer.</p>
+                    <h3>Start Queue</h3>
+                    <p>Click Download All. Our engine initializes a sequential processing queue to handle them
+                        automatically.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon">💾</div>
-                    <h3>Download</h3>
-                    <p>Save the high-quality MP4 file directly to your device. No re-encoding, no quality loss.</p>
+                    <h3>Auto-Save</h3>
+                    <p>Sit back as each video is processed and downloaded to your device one by one.</p>
                 </div>
             </div>
         </div>
@@ -97,14 +96,24 @@
     <section id="features" class="features-section">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose Us</h2>
-                <p>Built for creators and professionals.</p>
+                <h2>Why Choose Batch Mode</h2>
+                <p>Built for power users and archives.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Powered by edge computing for sub-second extraction times globally.</p>
+                    <div class="icon">🚀</div>
+                    <h3>Parallel Logic</h3>
+                    <p>Advanced queue management handling dozens of files efficiently.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🤖</div>
+                    <h3>Auto-Retry</h3>
+                    <p>Intelligent network handling ensures no download is left behind.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Live Log</h3>
+                    <p>Real-time status updates showing exactly what the engine is doing.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon">🔒</div>
@@ -115,16 +124,6 @@
                     <div class="icon">💎</div>
                     <h3>Original Quality</h3>
                     <p>Get the exact bit-perfect file generated by the AI, without the overlay.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">📱</div>
-                    <h3>mobile Ready</h3>
-                    <p>Seamless experience on iPhone, Android, Tablet, and Desktop.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🚀</div>
-                    <h3>Batch Support</h3>
-                    <p>Need to download a collection? Use our Batch Mode for bulk processing.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon">🛡️</div>
@@ -143,16 +142,17 @@
             </div>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3>Is this service free?</h3>
-                    <p>Yes, SoraFlow is currently free to use during our public Beta phase.</p>
+                    <h3>Is there a limit?</h3>
+                    <p>We recommend batches of up to 50 videos at a time for optimal browser performance.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Does it compromise quality?</h3>
                     <p>Absolutely not. We extract the source video stream directly, ensuring 100% fidelity.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Where are videos saved?</h3>
-                    <p>Videos are saved to your device's default download folder (e.g., Downloads, Photos).</p>
+                    <h3>My browser asked for permission?</h3>
+                    <p>Browsers naturally block multiple downloads. Please click "Allow" when prompted to save all
+                        files.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Is it API based?</h3>
@@ -170,13 +170,13 @@
                 </div>
                 <div class="footer-col">
                     <h4>Product</h4>
-                    <a href="#">Features</a>
-                    <a href="bulk/">Batch Mode</a>
+                    <a href="../index.html#features">Features</a>
+                    <a href="#">Batch Mode</a>
                     <a href="#">API Access (Soon)</a>
                 </div>
                 <div class="footer-col">
                     <h4>Support</h4>
-                    <a href="#faq">FAQ</a>
+                    <a href="../index.html#faq">FAQ</a>
                     <a href="#">Contact Us</a>
                     <a href="#">Status</a>
                 </div>
@@ -191,8 +191,7 @@
             </div>
         </div>
     </footer>
-
-    <script src="assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
 </body>
 
 </html>
