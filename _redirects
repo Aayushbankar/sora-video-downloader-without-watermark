@@ -1,0 +1,8 @@
+# SECURITY: Block access to the "Design" folder containing secret guides
+/local_designing/*  /404.html  404
+
+# SPA Fallback (Optional, but good for stability)
+/*  /index.html  200
+
+# API Proxy (Optional - if we need to bypass CORS later)
+# /api/*  https://api.soracdn.workers.dev/:splat  200
