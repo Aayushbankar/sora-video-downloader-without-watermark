@@ -155,7 +155,8 @@ nav {
 }
 
 /* Obfuscated Selectors */
-#v_in, #v_batch {
+#v_in,
+#v_batch {
     flex: 1;
     background: #000;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -173,7 +174,8 @@ nav {
     min-height: 150px;
 }
 
-#v_in:focus, #v_batch:focus {
+#v_in:focus,
+#v_batch:focus {
     border-color: rgba(212, 175, 55, 0.5);
     box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
 }
@@ -222,7 +224,7 @@ nav {
     font-size: 0.85rem;
     opacity: 0.8;
     text-align: left;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     padding: 12px;
     border-radius: 8px;
     max-height: 200px;
@@ -235,13 +237,31 @@ nav {
     display: block;
 }
 
-.log-entry { margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2px; }
-.log-entry.success { color: #22c55e; }
-.log-entry.error { color: #ef4444; }
-.log-entry.info { color: var(--text-muted); }
+.log-entry {
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 2px;
+}
 
-.error { color: #ef4444; }
-.success { color: #22c55e; }
+.log-entry.success {
+    color: #22c55e;
+}
+
+.log-entry.error {
+    color: #ef4444;
+}
+
+.log-entry.info {
+    color: var(--text-muted);
+}
+
+.error {
+    color: #ef4444;
+}
+
+.success {
+    color: #22c55e;
+}
 
 /* Stats Section */
 .stats-section {
@@ -343,7 +363,7 @@ nav {
 /* Features Section (Refined) */
 .features-section {
     padding: 100px 0;
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
 }
 
 .features-grid {
@@ -485,13 +505,117 @@ footer {
 }
 
 @keyframes rotation {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 768px) {
-    .hero-title { font-size: 3rem; }
-    .input-group { flex-direction: column; }
-    #act_btn { padding: 18px; width: 100%; }
-    .stats-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    /* Safe Area for notch phones */
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Header/Nav */
+    header {
+        padding: 15px 0;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding-top: 130px;
+        padding-bottom: 60px;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    /* Input Area */
+    .input-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #v_in,
+    #v_batch {
+        width: 100%;
+        font-size: 16px;
+        /* Prevents iOS zoom */
+    }
+
+    #act_btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Grids */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .steps-grid,
+    .features-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .faq-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Force stack for FAQ */
+
+    /* Cards */
+    .step-card,
+    .feature-card,
+    .faq-item {
+        padding: 24px 20px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-col a {
+        display: inline-block;
+        margin: 0 10px;
+    }
 }
