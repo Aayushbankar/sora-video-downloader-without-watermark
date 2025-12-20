@@ -1,0 +1,17 @@
+[build]
+  publish = "."
+  ignore = "git diff --quiet HEAD^ HEAD local_designing/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# SECURITY: Explicitly hide the de-obfuscation guide and source tools
+[[headers]]
+  for = "/local_designing/*"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate"
+
