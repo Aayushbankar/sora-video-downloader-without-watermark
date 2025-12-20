@@ -1,0 +1,29 @@
+# Sora Watermark Remover - Developer Guide (TOP SECRET)
+
+## Overview
+The `app.js` file is heavily obfuscated using a "Trojan Horse" strategy. It masquerades as a physics engine (`CanvasParticleRenderer`) to hide the API interactions.
+
+## De-Obfuscation Map
+
+### 1. Integer Array (`_PHYSICS_DATA`)
+This array contains the ASCII character codes for the API URL.
+- **Indices 0-31**: `https://api.soracdn.workers.dev`
+- **Indices 32+**: Random noise data to look like a bitmap.
+
+### 2. PhysicsSolver Class
+This is the main controller.
+- `init()`: Sets up event listeners.
+- `emitTelemetry()`: Sends fake fetch requests to random endpoints (e.g. `/stats/fps`) to flood network logs.
+- `update()`: Loop that runs every 16ms, used to trigger logic steps disguised as physics updates.
+- `triggerEvent()`: The actual API call logic.
+    - Reconstructs URL from `_PHYSICS_DATA`.
+    - Hits `/api-proxy/` to get metadata.
+    - Fallback logic for filename (`title` -> `description` -> `prompt`).
+    - Hits `/download-proxy` to generate the final link.
+
+### 3. Variable Mapping
+- `_STATE`: Holds simulation state (and the video URL target).
+- `_ui`: Object holding DOM references (input, button, loader).
+
+## Maintenance
+To make changes, edit the unminified source code in the `brain` artifacts or previous conversation history, then re-apply the obfuscation pattern. DO NOT edit `app.js` directly.
