@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "GetSoraVideo - Downloader",
+  "version": "1.0",
+  "description": "Download watermark-free videos from Sora directly.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://*.soracdn.workers.dev/*",
+    "*://sora.chatgpt.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://sora.chatgpt.com/p/*"],
+      "js": ["content.js"],
+      "css": ["assets/css/content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
