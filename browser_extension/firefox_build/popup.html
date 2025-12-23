@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetSoraVideo</title>
+    <link rel="stylesheet" href="assets/css/popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">GetSora<span class="highlight">Video</span></div>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <input type="text" id="videoUrl" placeholder="Paste Sora URL..." autocomplete="off">
+            </div>
+
+            <button id="downloadBtn" class="primary-btn">
+                <span class="btn-text">Download No-Watermark</span>
+                <div class="loader hidden"></div>
+            </button>
+
+            <div class="status-container">
+                <div id="statusMessage" class="status-msg">
+                    <span style="font-size: 0.8em; opacity: 0.5;">Ready to process</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <a href="https://ko-fi.com/enthudev" target="_blank" class="footer-link support-link">
+                <span>☕</span> Support Me
+            </a>
+            <a href="https://getsoravideo.netlify.app/" target="_blank" class="footer-link">
+                <span>🌐</span> Website
+            </a>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
