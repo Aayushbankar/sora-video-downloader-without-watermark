@@ -56,7 +56,14 @@ class SoraVideoDownloader:
             if not video_data.get('post_id'):
                 raise ValueError("Video ID not found in response")
             
-            title = video_data.get('title')
+            # Update for new API structure: title is inside post_info
+            post_info = video_data.get('post_info', {})
+            title = video_data.get('title') or post_info.get('title')
+            
+            # Map back to flat structure for compatibility
+            if not video_data.get('title') and title:
+                video_data['title'] = title
+            
             if title:
                 print(f"📄 Found Title: {title}")
             else:
