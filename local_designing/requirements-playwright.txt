@@ -1,0 +1,14 @@
+# Requirements for Playwright-based Sora downloader
+# Install with: pip install -r requirements-playwright.txt
+
+# Anti-detect browser (recommended for Cloudflare bypass)
+camoufox>=0.2.0
+
+# Standard browser automation (fallback)
+playwright>=1.40.0
+
+# HTTP requests for video download
+requests>=2.28.0
+
+# After installing, run: camoufox fetch
+# This downloads the Camoufox browser binary
