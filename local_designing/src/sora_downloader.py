@@ -252,7 +252,30 @@ Examples:
         help='Test API connection'
     )
     
+    parser.add_argument(
+        '--method',
+        choices=['proxy', 'playwright'],
+        default='proxy',
+        help='Download method: proxy (uses CDN worker) or playwright (independent, requires camoufox)'
+    )
+    
     args = parser.parse_args()
+    
+    # Use Playwright method if requested
+    if args.method == 'playwright':
+        try:
+            from sora_playwright_downloader import SoraPlaywrightDownloader
+            print("🎭 Using Playwright method (independent, no CDN worker)")
+            downloader = SoraPlaywrightDownloader()
+            output_path = downloader.download(args.url, args.output)
+            print(f"✅ Downloaded: {output_path}")
+            return
+        except ImportError:
+            print("❌ Playwright method requires: pip install camoufox playwright && camoufox fetch")
+            sys.exit(1)
+        except Exception as e:
+            print(f"❌ Playwright download failed: {e}")
+            sys.exit(1)
     
     # Initialize downloader
     downloader = SoraVideoDownloader()
